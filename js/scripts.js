@@ -6,27 +6,40 @@
 // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri 
 //da indovinare sono stati individuati.
 
+let numeriRandom = [];
+
+const numeriInseriti = [];
 
 document.getElementById('startButton').addEventListener('click',
-
 
 function() {
     
     document.getElementById('containerNumero').innerHTML = '';
+    
+    setTimeout(svuotaNumeri, 5000);
 
     for (let i=0; i < 5; i++) {
+
+        let randN = getRandomNumber(1, 100);
+
+        numeriRandom.push(randN);
 
         const divNumero = document.createElement('div');
     
         divNumero.classList.add('numero')
     
-        divNumero.innerText = getRandomNumber(1, 100);
+        divNumero.innerText = randN;
     
         document.querySelector('div#containerNumero').append(divNumero);
-        
     }
+
+    console.log(numeriRandom);
 });
 
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function svuotaNumeri() {
+    document.getElementById('containerNumero').innerHTML = '';
 }
