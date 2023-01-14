@@ -60,6 +60,7 @@ function chiediUtente() {
     console.log(numeriInseriti, 'Numeri inseriti utente array');
 
     checkQuantiNumeri();
+    checkPosizioneNumeri()
 }
 
 document.getElementById('startButton').addEventListener('click', 
@@ -69,16 +70,17 @@ document.getElementById('startButton').addEventListener('click',
     }
 )
 
+let numeriGiusti = 0;
+
+let numeriSbagliati = 0;
+
 function checkQuantiNumeri() {
-
-    let numeriGiusti = 0;
-
-    let numeriSbagliati = 0;
 
     for (i = 0; i < 5; i++) {
 
         if (numeriInseriti[i] == numeriRandom[i]) {
             numeriGiusti++
+
         }
         else {
             numeriSbagliati++
@@ -86,6 +88,24 @@ function checkQuantiNumeri() {
     }
     
     console.log('Hai indovinato ' + numeriGiusti + ' numeri!');
-    console.log('Hia sbagliato ' + numeriSbagliati + ' numeri.');
+    console.log('Hai sbagliato ' + numeriSbagliati + ' numeri.');
+    
+}
+
+function checkPosizioneNumeri() {
+    
+    for (i = 0; i < 5; i++) {
+        
+        if (numeriInseriti[i] == numeriRandom[i]) {
+            
+            console.log('Il numero in posizione '+ (i + 1) +' è corretto');
+
+
+        }
+        else {
+            console.log('Il numero in posizione '+ (i + 1) +' non corretto');
+        }
+
+    }
 
 }
