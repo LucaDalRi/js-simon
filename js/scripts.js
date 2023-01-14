@@ -33,8 +33,10 @@ function() {
         document.querySelector('div#containerNumero').append(divNumero);
     }
 
+    
     console.log(numeriRandom);
-});
+    
+})
 
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -50,21 +52,40 @@ function chiediUtente() {
 
     for(i=0; i < 5; i++) {
 
-        const nPromtUtente = prompt('Inserisci il ' + (i + 1) + '° numero');
+        const nPromtUtente = parseInt(prompt('Inserisci il ' + (i + 1) + '° numero'));
 
         numeriInseriti.push(nPromtUtente);
 
     }
     console.log(numeriInseriti, 'Numeri inseriti utente array');
+
+    checkQuantiNumeri();
 }
 
 document.getElementById('startButton').addEventListener('click', 
 
     function() {
-
         setTimeout(chiediUtente, 6000);
-
     }
-
-
 )
+
+function checkQuantiNumeri() {
+
+    let numeriGiusti = 0;
+
+    let numeriSbagliati = 0;
+
+    for (i = 0; i < 5; i++) {
+
+        if (numeriInseriti[i] == numeriRandom[i]) {
+            numeriGiusti++
+        }
+        else {
+            numeriSbagliati++
+        }
+    }
+    
+    console.log('Hai indovinato ' + numeriGiusti + ' numeri!');
+    console.log('Hia sbagliato ' + numeriSbagliati + ' numeri.');
+
+}
