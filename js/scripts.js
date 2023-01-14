@@ -8,7 +8,7 @@
 
 let numeriRandom = [];
 
-const numeriInseriti = [];
+let numeriInseriti = [];
 
 document.getElementById('startButton').addEventListener('click',
 
@@ -43,3 +43,28 @@ function getRandomNumber(min, max) {
 function svuotaNumeri() {
     document.getElementById('containerNumero').innerHTML = '';
 }
+
+function chiediUtente() {
+
+    alert('Ora dovrai inserire i numeri dall`alto in basso!');
+
+    for(i=0; i < 5; i++) {
+
+        const nPromtUtente = prompt('Inserisci il ' + (i + 1) + '° numero');
+
+        numeriInseriti.push(nPromtUtente);
+
+    }
+    console.log(numeriInseriti, 'Numeri inseriti utente array');
+}
+
+document.getElementById('startButton').addEventListener('click', 
+
+    function() {
+
+        setTimeout(chiediUtente, 6000);
+
+    }
+
+
+)
